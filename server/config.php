@@ -7,10 +7,10 @@ $config = [
     'rootPath' => '',
 
     // 微信小程序 AppID
-    'appId' => '',
+    'appId' => 'wxce8246dba9f267f7',
 
     // 微信小程序 AppSecret
-    'appSecret' => '',
+    'appSecret' => 'ef2c5f2127deb967b0f36d70f2a9c4f1',
 
     // 使用腾讯云代理登录
     'useQcloudLogin' => true,
@@ -25,7 +25,7 @@ $config = [
         'port' => 3306,
         'user' => 'root',
         'db'   => 'cAuth',
-        'pass' => '',
+        'pass' => 'wxce8246dba9f267f7',
         'char' => 'utf8mb4'
     ],
 
