@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://www.zuopianzi.com';
+var host = 'https://www.zuopianzi.com/livechat/server/index.php/';
 
 var config = {
 
@@ -12,16 +12,16 @@ var config = {
         host,
 
         // 登录地址，用于建立会话
-        loginUrl: `${host}/livechat/server/index.php/login`,
+        loginUrl: `${host}login`,
 
         // 测试的请求地址，用于测试会话
-        requestUrl: `${host}/livechat/server/index.php/user`,
+        requestUrl: `${host}user`,
 
         // 测试的信道服务地址
-        tunnelUrl: `${host}/livechat/server/index.php/tunnel`,
+        tunnelUrl: `${host}tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/livechat/server/index.php/upload`
+        uploadUrl: `${host}upload`
     }
 };
 

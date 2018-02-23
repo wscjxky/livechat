@@ -1,8 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/addCgi/addCgi",
-    "server/application/controllers/Test.php"
+    "pages/addCgi/addCgi"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
