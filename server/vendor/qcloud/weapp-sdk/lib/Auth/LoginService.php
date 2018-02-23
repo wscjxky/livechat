@@ -15,10 +15,10 @@ class LoginService {
 
             return AuthAPI::login($code, $encryptedData, $iv);
         } catch (Exception $e) {
-            return [
+            return array(
                 'loginState' => Constants::E_AUTH,
                 'error' => $e->getMessage()
-            ];
+            );
         }
     }
 
@@ -28,10 +28,10 @@ class LoginService {
 
             return AuthAPI::checkLogin($skey);
         } catch (Exception $e) {
-            return [
+            return array(
                 'loginState' => Constants::E_AUTH,
                 'error' => $e->getMessage()
-            ];
+            );
         }
     }
 

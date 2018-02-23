@@ -43,34 +43,34 @@ class AuthAPI {
         // 4. 储存到数据库中
         User::storeUserInfo($userinfo, $skey, $sessionKey);
 
-        return [
+        return array(
             'loginState' => Constants::S_AUTH,
             'userinfo' => compact('userinfo', 'skey')
-        ];
+        );
     }
 
     public static function checkLogin($skey) {
         $userinfo = User::findUserBySKey($skey);
         if ($userinfo === NULL) {
-            return [
+            return array(
                 'loginState' => Constants::E_AUTH,
-                'userinfo' => []
-            ];
+                'userinfo' => array()
+            );
         }
 
         $wxLoginExpires = Conf::getWxLoginExpires();
         $timeDifference = time() - strtotime($userinfo->last_visit_time);
         
         if ($timeDifference > $wxLoginExpires) {
-            return [
+            return array(
                 'loginState' => Constants::E_AUTH,
-                'userinfo' => []
-            ];
+                'userinfo' => array()
+            );
         } else {
-            return [
+            return array(
                 'loginState' => Constants::S_AUTH,
                 'userinfo' => json_decode($userinfo->user_info, true)
-            ];
+            );
         }
     }
 
@@ -107,17 +107,17 @@ class AuthAPI {
      * @return {array} { $session_key, $openid }
      */
     private static function getSessionKeyDirectly ($appId, $appSecret, $code) {
-        $requestParams = [
+        $requestParams = array(
             'appid' => $appId,
             'secret' => $appSecret,
             'js_code' => $code,
             'grant_type' => 'authorization_code'
-        ];
+        );
 
-        list($status, $body) = array_values(Request::get([
+        list($status, $body) = array_values(Request::get(array(
             'url' => 'https://api.weixin.qq.com/sns/jscode2session?' . http_build_query($requestParams),
             'timeout' => Conf::getNetworkTimeout()
-        ]));
+        )));
 
         if ($status !== 200 || !$body || isset($body['errcode'])) {
             throw new Exception(Constants::E_PROXY_LOGIN_FAILED . ': ' . json_encode($body));
@@ -141,14 +141,14 @@ class AuthAPI {
 
         $requestUrl = 'wss.api.qcloud.com/v2/index.php';
         $requestMethod = 'GET';
-        $requestData = [
+        $requestData = array(
             'Action' => 'GetSessionKey',
             'js.code' => $code,
             'Timestamp' => time(),
             'Nonce' => mt_rand(),
             'SecretId' => $secretId,
             'SignatureMethod' => 'HmacSHA256'
-        ];
+        );
 
         ksort($requestData);
         $requestString = http_build_query($requestData);
@@ -156,10 +156,10 @@ class AuthAPI {
 
         $requestData['Signature'] = base64_encode(hash_hmac('sha256', $signatureRawString, $secretKey, true));
 
-        list($status, $body) = array_values(Request::get([
+        list($status, $body) = array_values(Request::get(array(
             'url' => 'https://' . $requestUrl . '?' . http_build_query($requestData),
             'timeout' => Conf::getNetworkTimeout()
-        ]));
+        )));
 
         if ($status !== 200 || !$body || $body['code'] !== 0) {
             throw new Exception(Constants::E_PROXY_LOGIN_REQUEST_FAILED);

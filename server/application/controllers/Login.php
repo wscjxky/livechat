@@ -9,15 +9,15 @@ class Login extends CI_Controller {
         $result = LoginService::login();
         
         if ($result['loginState'] === Constants::S_AUTH) {
-            $this->json([
+            $this->json(array(
                 'code' => 0,
                 'data' => $result['userinfo']
-            ]);
+            ));
         } else {
-            $this->json([
+            $this->json(array(
                 'code' => -1,
                 'error' => $result['error']
-            ]);
+            ));
         }
     }
 }

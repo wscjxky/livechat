@@ -15,7 +15,7 @@ class Conf {
     private static $LogThreshold = 0;
 
     // SDK 日志输出级别（数组）
-    private static $LogThresholdArray = [];
+    private static $LogThresholdArray = array();
 
     // 程序运行的根路径
     private static $RootPath = '';
@@ -30,26 +30,26 @@ class Conf {
     private static $UseQcloudLogin = true;
     
     // 数据库配置信息
-    private static $Mysql = [
+    private static $Mysql = array(
         'host' => 'localhost',
         'port' => 3306,
         'user' => 'root',
         'db'   => 'cAuth',
-        'pass' => '',
+        'pass' => 'HuiTeng168',
         'char' => 'utf8mb4'
-    ];
+    );
     
     // COS 配置信息
-    private static $Cos = [
+    private static $Cos = array(
         'region' => 'cn-south',
         'fileBucket' => 'qcloudtest',
         'uploadFolder' => '',
         'maxSize' => 5,
         'field' => 'file'
-    ];
+    );
 
     // 当前使用 SDK 服务器的主机，该主机需要外网可访问
-    private static $ServerHost = '';
+    private static $ServerHost = '182.92.97.97';
 
     // 信道服务器服务地址
     private static $TunnelServerUrl = '';
@@ -58,16 +58,16 @@ class Conf {
     private static $TunnelSignatureKey = '';
 
     // 腾讯云 AppID
-    private static $QcloudAppId = 123456789;
+    private static $QcloudAppId = 1256105809;
     
     // 腾讯云 QcloudSecretId
-    private static $QcloudSecretId = '';
+    private static $QcloudSecretId = 'AKIDjNsBIHRh7LOEtMsOEvbAWhmkX9ZonjPt';
 
     // 腾讯云 QcloudSecretKey
-    private static $QcloudSecretKey = '';
+    private static $QcloudSecretKey = 'RhkamplW5SgnncTB0lKjwyESaYL2Yt8g';
     
     // 微信消息通知 token
-    private static $WxMessageToken = '';
+    private static $WxMessageToken = 'weixin';
 
     // 微信登录态有效期
     private static $WxLoginExpires = 7200;

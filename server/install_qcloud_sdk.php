@@ -14,7 +14,7 @@ if (PHP_OS === 'WINNT') {
     $sdkConfigPath = '/data/release/sdk.config.json';
 }
 
-$sdkConfig = [];
+$sdkConfig = array();
 
 if (file_exists($sdkConfigPath)) {
     $sdkConfig = json_decode(file_get_contents($sdkConfigPath), true);
@@ -49,4 +49,6 @@ Conf::setLogPath(APPPATH . 'logs/');
 
 // 设置日志输出级别
 // 1 => ERROR, 2 => DEBUG, 3 => INFO, 4 => ALL
-Conf::setLogThresholdArray([2]); // output debug log only
+$arr=array();
+array_push($arr,2);
+Conf::setLogThresholdArray($arr); // output debug log only

@@ -12,16 +12,16 @@ var config = {
         host,
 
         // 登录地址，用于建立会话
-        loginUrl: `${host}/livechat/login`,
+        loginUrl: `${host}/livechat/server/index.php/login`,
 
         // 测试的请求地址，用于测试会话
-        requestUrl: `${host}/livechat/user`,
+        requestUrl: `${host}/livechat/server/index.php/user`,
 
         // 测试的信道服务地址
-        tunnelUrl: `${host}/livechat/tunnel`,
+        tunnelUrl: `${host}/livechat/server/index.php/tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/livechat/upload`
+        uploadUrl: `${host}/livechat/server/index.php/upload`
     }
 };
 
