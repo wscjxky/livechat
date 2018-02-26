@@ -52,10 +52,10 @@ class Conf {
     private static $ServerHost = '182.92.97.97';
 
     // 信道服务器服务地址
-    private static $TunnelServerUrl = '';
+    private static $TunnelServerUrl = 'ws://182.92.97.97:8181';
 
     // 和信道服务器通信的签名密钥，该密钥需要保密
-    private static $TunnelSignatureKey = '';
+    private static $TunnelSignatureKey = 'wexin';
 
     // 腾讯云 AppID
     private static $QcloudAppId = 1256105809;
